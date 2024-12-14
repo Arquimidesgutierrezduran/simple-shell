@@ -1,9 +1,7 @@
 #include "core.h"
 
-int
-main(int argc, char *argv[])
-{
-  struct shell* shell = createShell();
+int main(int argc, char *argv[]) {
+  struct shell *shell = createShell();
 
   if (shell->init() != EXIT_SUCCESS) {
     fprintf(stderr, "ERR: Lo siento, no se ha podido inicializar la shell\n");
@@ -14,6 +12,6 @@ main(int argc, char *argv[])
     fprintf(stderr, "ERR: Lo siento la shell ha terminado con un error\n");
     return EXIT_FAILURE;
   }
-  
+
   return EXIT_SUCCESS;
 }

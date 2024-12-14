@@ -1,9 +1,10 @@
 #pragma once
 
-#include <stdlib.h>
 #include <stdio.h>
-#include <unistd.h>
+#include <stdlib.h>
 #include <string.h>
+#include <sys/wait.h>
+#include <unistd.h>
 
 #define STD_I 0
 #define STD_O 1
@@ -11,17 +12,18 @@
 
 #define NO_BUFFERED _IONBF
 
-struct shell
-{
+struct shell {
   int (*init)(void);
   int (*run)(void);
+
+  char **paths;
 };
 
-struct shell* createShell(void);
+struct shell *createShell(void);
 
 int init(void);
 int run(void);
-int execCommand(void);
+int execCommand(char **tokens);
 int printPrompt(void);
-char* getInput(void);
-char** process(char* input);
+char *getInput(void);
+char **process(char *input);
