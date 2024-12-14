@@ -1,5 +1,7 @@
 #include "core.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 struct shell* 
 createShell(void)
@@ -12,10 +14,23 @@ createShell(void)
   return shell;
 }
 
-char* process(char* input)
+char** process(char* input)
 {
+  int i = 0;
+  char** tokens = (char**)malloc(sizeof(char*) * 100);
+  char* token;  
 
-  return input;
+  token = strtok(input, " ");
+
+  while (token != NULL) {
+    tokens[i++] = token;
+    token = strtok(NULL, " ");
+  }
+
+  tokens[i] = NULL;
+  i = 0;
+  
+  return tokens;
 }
 
 char* 
@@ -48,8 +63,14 @@ run(void)
 {
   printPrompt();
 
+  int i = 0;
   char* input = getInput();
-  process(input);  
+  char** tokens = process(input);    
+
+  while (tokens[i] != NULL) {
+    printf("%s\n", tokens[i]);
+    i++;
+  }
 
   free(input);
 

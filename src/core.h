@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <string.h>
 
 #define STD_I 0
 #define STD_O 1
@@ -23,4 +24,4 @@ int run(void);
 int execCommand(void);
 int printPrompt(void);
 char* getInput(void);
-char* process(char* input);
+char** process(char* input);
