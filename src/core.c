@@ -1,7 +1,4 @@
 #include "core.h"
-#include <stdio.h>
-#include <string.h>
-#include <sys/wait.h>
 
 struct shell *createShell(void) {
   struct shell *shell = (struct shell *)malloc(sizeof(struct shell));
